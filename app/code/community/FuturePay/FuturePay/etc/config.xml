@@ -2,7 +2,7 @@
 <config>
     <modules>
         <futurepay_futurepay>
-            <version>2.0.0</version>
+            <version>2.0.11</version>
         </futurepay_futurepay>
     </modules>
     
@@ -68,13 +68,6 @@
             <futurepay>
                 <active>1</active>
                 <model>futurepay/method_futurepay</model>
-                <checkout_url>https://api.futurepay.com/remote/merchant-request-order-token</checkout_url>
-                <cart_integration>https://api.futurepay.com/remote/cart-integration/</cart_integration>
-                <order_verification_url>https://api.futurepay.com/remote/merchant-order-verification?</order_verification_url>
-                <pmid>33525d80d1e7a2d04e6adf9950619d297cff5c36FPM674662647</pmid>
-                <sandbox_checkout_url>https://sandbox.futurepay.com/remote/merchant-request-order-token</sandbox_checkout_url>
-                <sandbox_cart_integration>https://sandbox.futurepay.com/remote/cart-integration/</sandbox_cart_integration>
-                <sandbox_order_verification_url>https://sandbox.futurepay.com/remote/merchant-order-verification?</sandbox_order_verification_url>
                 <order_status>pending</order_status>
                 <title>Buy Now and Pay Later with FuturePay</title>
                 <allowspecific>0</allowspecific>
@@ -82,12 +75,4 @@
             </futurepay>
         </payment>
     </default>
-    <crontab>
-        <jobs>
-            <futurepay_check_transaction_status>
-                <schedule><cron_expr>*/10 * * * *</cron_expr></schedule>
-                <run><model>futurepay/observer::checkTransactionStatus</model></run>
-            </futurepay_check_transaction_status>
-        </jobs>
-    </crontab>
 </config>

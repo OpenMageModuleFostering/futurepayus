@@ -1,102 +1,18 @@
-<?php /* <style type="text/css">
-    .FP_redirectmessage #fp-signup-form,
-    .FP_redirectmessage #fp-login-form {
-        max-width: 500px;
-        padding: 10px;
-        margin: 10px;
-        vertical-align: middle;
-        font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
-        -webkit-border-radius: 5px;
-        -moz-border-radius: 5px;
-        border-radius: 5px;
-        -moz-background-clip: padding;
-        -webkit-background-clip: padding-box;
-        background-clip: padding-box;
-    }
-    .FP_redirectmessage #fp-signup-form .fp-label,
-    .FP_redirectmessage #fp-login-form .fp-label {
-        display: block;
-        margin-right: 20px;
-        padding-left: 4px;
-        font-weight: bold;
-        color: grey;
-    }
-    .FP_redirectmessage #fp-signup-form input,
-    .FP_redirectmessage #fp-login-form input,
-    .FP_redirectmessage #fp-signup-form select,
-    .FP_redirectmessage #fp-login-form select {
-        font-family: Lato, monospace !important;
-        width: 100%;
-        display: inline-block;
-        font-size: 1em;
-        margin: 5px 10px 10px 10px auto;
-        padding: 0 10px !important;
-    }
-    .FP_redirectmessage #fp-signup-form select,
-    .FP_redirectmessage #fp-login-form select {
-        width: 95px;
-        background-color: white;
-    }
-    .FP_redirectmessage #fp-signup-form #zip,
-    .FP_redirectmessage #fp-login-form #zip,
-    .FP_redirectmessage #fp-signup-form #main_phone,
-    .FP_redirectmessage #fp-login-form #main_phone,
-    .FP_redirectmessage #fp-signup-form #ssn,
-    .FP_redirectmessage #fp-login-form #ssn {
-        max-width: 305px;
-    }
-    .FP_redirectmessage #fp-signup-form img,
-    .FP_redirectmessage #fp-login-form img {
-        vertical-align: middle;
-        display: inline;
-    }
-    .FP_redirectmessage #fp-signup-form input[type="button"],
-    .FP_redirectmessage #fp-login-form input[type="button"] {
-        margin: 15px 0px 15px 15px;
-        height: 32px;
-        display: inline-block;
-        font-size: 1em;
-        margin-left: 89px;
-        text-decoration: none;
-        width: 120px !important;
-    }
-    .FP_redirectmessage #fp-signup-form .fp-signup-link,
-    .FP_redirectmessage #fp-login-form .fp-signup-link {
-        text-decoration: none;
-        font-weight: bold;
-        font-size: 1em !important;
-        float: none;
-    }
-    .FP_redirectmessage #fp-signup-form input[type="checkbox"].fp-checkbox,
-    .FP_redirectmessage #fp-login-form input[type="checkbox"].fp-checkbox {
-        text-align: left;
-        width: 13px !important;
-        height: 13px;
-        padding: 0;
-        vertical-align: middle;
-    }
-    .FP_redirectmessage #fp-signup-form .fp-terms-label,
-    .FP_redirectmessage #fp-login-form .fp-terms-label {
-        width: 300px;
-    }
-    .FP_redirectmessage #fp-signup-form .fp-error-element,
-    .FP_redirectmessage #fp-login-form .fp-error-element {
-        height: 1em;
-        text-align: center;
-        display: inline-block;
-        width: 100%;
-    }
-    .FP_redirectmessage #fp-signup-form .fp-error-message,
-    .FP_redirectmessage #fp-login-form .fp-error-message {
-        text-align: left;
-        font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
-    }
-</style> */ ?>
-<?php if (substr(Mage::getVersion(), 0, 3) == '1.8' || substr(Mage::getVersion(), 0, 3) == '1.7' || substr(Mage::getVersion(), 0, 3) == '1.6' || substr(Mage::getVersion(), 0, 3) == '1.5') {
-    echo "<link href='". $this->getSkinUrl('futurepay/styles18.css') ."' rel='stylesheet' type='text/css'>";
-} else {
+<?php
+// this will be set to true if the extension is installed on Magento EE
+$isEnterprise = Mage::getConfig ()->getModuleConfig ( 'Enterprise_Enterprise' ) 
+        && Mage::getConfig ()->getModuleConfig ( 'Enterprise_AdminGws' ) 
+        && Mage::getConfig ()->getModuleConfig ( 'Enterprise_Checkout' ) 
+        && Mage::getConfig ()->getModuleConfig ( 'Enterprise_Customer' );
+
+// switch the stylesheet based on the magento version
+if ( (version_compare(Mage::getVersion(), '1.14', '>=') && $isEnterprise)
+        || (version_compare(Mage::getVersion(), '1.9', '>=') && !$isEnterprise) ) {
     echo "<link href='". $this->getSkinUrl('futurepay/styles19.css') ."' rel='stylesheet' type='text/css'>";
-} ?>
+} else {
+    echo "<link href='". $this->getSkinUrl('futurepay/styles18.css') ."' rel='stylesheet' type='text/css'>";
+}
+?>
 <ul class="form-list" id="payment_form_<?php echo $this->getMethodCode() ?>" style="display:none;">
     <li class="form-alt">
         <div id="FP_redirectmessage" class="FP_redirectmessage">
@@ -107,6 +23,16 @@
     </li>
 </ul>
 <?php
+$customerFirstname = Mage::getSingleton('checkout/session')->getQuote()->getBillingAddress()->getFirstname();
+if (!$customerFirstname) {
+    $customerFirstname = Mage::getSingleton('checkout/session')->getQuote()->getCustomerFirstname();;
+}
+
+$customerLastname = Mage::getSingleton('checkout/session')->getQuote()->getBillingAddress()->getLastname();
+if (!$customerLastname) {
+    $customerLastname = Mage::getSingleton('checkout/session')->getQuote()->getCustomerLastname();
+}
+
 $customerEmail = Mage::getSingleton('checkout/session')->getQuote()->getBillingAddress()->getEmail();
 if (!$customerEmail) {
     $customerEmail = Mage::getSingleton('checkout/session')->getQuote()->getCustomerEmail();
@@ -115,12 +41,21 @@ if (!$customerEmail) {
 // get the order total
 $quoteData = Mage::getModel('checkout/session')->getQuote()->getData();
 $grandTotal = $quoteData['grand_total'];
+if ($grandTotal < 0) {
+    $grandTotal = 0;
+}
 ?>
 <script type="text/javascript">
     var customerEmail = '<?php echo urlencode($customerEmail); ?>';
+    var prePopulatedFields = {
+        element_id: "FP_applicationForm",
+        first_name: '<?php echo $customerFirstname; ?>',
+        last_name: '<?php echo $customerLastname; ?>',
+        zip: '<?php echo Mage::getSingleton('checkout/session')->getQuote()->getBillingAddress()->getPostcode(); ?>',
+        street_address: '<?php echo Mage::getSingleton('checkout/session')->getQuote()->getBillingAddress()->getStreet(1); ?>',
+        phone: '<?php echo Mage::getSingleton('checkout/session')->getQuote()->getBillingAddress()->getTelephone(); ?>'
+    };
     var FP_MerchantId = "<?php echo trim(substr(Mage::getStoreConfig('payment/futurepay/gmid'), 40, 45)); ?>";
-    var FP_Initialized = false;
-    var FP_Available = false;
     var FP_Messages = {
         'FPS00001': 'Congratulations!  Your FuturePay account has been created successfully.  Please continue on with your purchase and check your email for further details.',
         'FPS00003': 'Congratulations!  Your FuturePay account has been created successfully.  Please continue on with your purchase and check your email for further details.',
@@ -128,185 +63,270 @@ $grandTotal = $quoteData['grand_total'];
         'FPE00011': 'Your FuturePay account could not be created.  Please check your email for further details.',
         'FPE00018': 'Your order exceeds your available FuturePay credit.  Please log into your FuturePay account or contact support at 1-855-984-1125 for further details.'
     };
+
+    var createOnestepButtonPlaceholder = function () {
+        if ($('onestepcheckout-button-place-order') !== null) {
+            if ($('onestepcheckout-button-place-order-FP') !== null) {
+                $('onestepcheckout-button-place-order-FP').remove();
+            }
+            buttonPlaceholderEl = $('onestepcheckout-button-place-order').clone(true);
+            buttonPlaceholderEl.id = 'onestepcheckout-button-place-order-FP';
+            buttonPlaceholderEl.addClassName('disabled');
+            buttonPlaceholderEl.writeAttribute('disabled', 'disabled');
+            $('onestepcheckout-button-place-order').insert({after: buttonPlaceholderEl});
+            buttonPlaceholderEl.hide();
+        }
+    };
+
+    var buttonPlaceholderEl;
+    document.observe("dom:loaded", function() {
+        createOnestepButtonPlaceholder();
+    });
+
+
+    // uncheck futurepay as a payment method on first load
     $('p_method_<?php echo $this->getMethodCode(); ?>').checked = false;
-    if (customerEmail.length > 0
-            && FP_MerchantId.length > 0) {
-                
+    if (FP_MerchantId.length > 0) {
+        
         if (<?php echo Mage::getStoreConfig('payment/futurepay/is_sandbox_mode'); ?>  === 1) {
             var requestHost = 'sandbox.futurepay.com';
         } else {
             var requestHost = 'api.futurepay.com';
         }
         
-        new Ajax.Request('https://' + requestHost + '/api/content/merchant_id/' + FP_MerchantId + '/email/' + customerEmail, {
-            method: 'get',
-            onCreate: function(request) {
-                //disable pre-flight
-                request.transport.setRequestHeader = Prototype.emptyFunction;
-            },
-            onSuccess: function(response) {
-                if (response.getResponseHeader('Content-Type') === 'text/javascript') {
-                    try {
-                        var functionCall = new Function(response.responseText);
-                    } catch (e) {
-                        if (e instanceof SyntaxError) {
-                            console.log('Syntax error reported in FuturePay js: ' + e.message);
-                        }
-                    }
-                    
-                    if (typeof(functionCall) === 'function') {
-                        // this is the FP object
-                        functionCall();
-                        FP_Available = true;
-                    }
-                } else {
-                    // fp json error - insert the error into $('FP_applicationForm')
-                    // disable the Continue button if futurepay is selected
-                    var responseObj = response.responseText.evalJSON();
-                    console.log('FP ERROR ON INIT', responseObj);
-                    if (typeof(responseObj) == 'object') {
-                        if (typeof(FP_Messages[responseObj.code]) != 'undefined') {
-                            $('FP_applicationForm').update(FP_Messages[responseObj.code]);
-                        } else {
-                            $('FP_applicationForm').update('An error occurred, please try again or select another payment method.');
-                        }
-                    }
-                }
-            }
-        });
-
         // detect a change in the rest of the payment methods
         $$('input[id^=p_method_]').each(function (el) {
             if (el.id != 'p_method_<?php echo $this->getMethodCode(); ?>') {
                 el.observe('change', function () {
                     // enable the continue button
-                    $('payment-buttons-container').down('button').removeClassName('disabled');
-                    $('payment-buttons-container').down('button').writeAttribute("disabled", false);;
+                    if ($('payment-buttons-container') !== null) {
+                        $('payment-buttons-container').down('button').removeClassName('disabled');
+                        $('payment-buttons-container').down('button').writeAttribute("disabled", false);
+                    } else if ($('checkout-review') !== null) {
+                        $('checkout-review').down('button').removeClassName('disabled');
+                        $('checkout-review').down('button').writeAttribute("disabled", false);
+                    } else if ($('onestepcheckout-button-place-order') !== null) {
+                        $('onestepcheckout-button-place-order').removeClassName('disabled');
+                        $('onestepcheckout-button-place-order').writeAttribute('disabled', false);
+                        $('onestepcheckout-button-place-order').show();
+                        createOnestepButtonPlaceholder();
+                        buttonPlaceholderEl.hide();
+                    }
                 });
             }
         });
 
         // detect a change in ONLY the futurepay payment method
-        $('p_method_<?php echo $this->getMethodCode(); ?>').observe('change', function () {
-            
-            // disable the continue button
-            $('payment-buttons-container').down('button').addClassName('disabled');
-            $('payment-buttons-container').down('button').writeAttribute("disabled", "disabled");
-
-            if (FP_Available && !FP_Initialized) {
-                FP.handleResponse = function(data)
-                {
-                    if (data.status == '1') {
-                        console.log('FP SUCCESS RESPONSE', data);
-                        if (data.object.available_credit >= <?php echo $grandTotal; ?>) {
-                            
-                            new Ajax.Request("<?php echo Mage::getUrl('futurepay/index/storefptoken'); ?>", {
-                                parameters: data,
-                                method: 'post',
-                                onComplete: function(response) {
-
-                                    // login/application successful - hide the form
-                                    // and let the user carry on
-                                    $('FP_applicationForm').update();
-                                    // allow the user to click "Continue"
-                                    $('payment-buttons-container').down('button').removeClassName('disabled');
-                                    $('payment-buttons-container').down('button').writeAttribute("disabled", false);
-
-                                    // call the built-in function to move to the next step
-                                    payment.save();
+        $('p_method_<?php echo $this->getMethodCode(); ?>').observe('click', function () {
+                        
+            if (<?php echo $grandTotal; ?> > 0) {
+                
+                // get the updated customer email address from the form if it's
+                // available
+                if (typeof($$(':input[name=billing\[email\]]')) === 'object'
+                        && $$(':input[name=billing\[email\]]').length > 0) {
+                    customerEmail = $$(':input[name=billing\[email\]]')[0].value;
+                }
+                
+                // disable the continue button
+                if ($('payment-buttons-container') !== null) {
+                    $('payment-buttons-container').down('button').addClassName('disabled');
+                    $('payment-buttons-container').down('button').writeAttribute("disabled", "disabled");
+                } else if ($('checkout-review') !== null) {
+                    $('checkout-review').down('button').addClassName('disabled');
+                    $('checkout-review').down('button').writeAttribute("disabled", 'disabled');
+                } else if($('onestepcheckout-button-place-order') !== null) {
+                    $('onestepcheckout-button-place-order').addClassName('disabled');
+                    $('onestepcheckout-button-place-order').writeAttribute('disabled', 'disabled');
+                    $('onestepcheckout-button-place-order').hide();
+                    createOnestepButtonPlaceholder();
+                    buttonPlaceholderEl.show();
+                }
+                
+                // clear out the form
+                $('FP_applicationForm').update();
+                
+                new Ajax.Request('https://' + requestHost + '/api/content/merchant_id/' + FP_MerchantId + '/email/' + customerEmail, {
+                    method: 'get',
+                    onCreate: function(request) {
+                        //disable pre-flight
+                        request.transport.setRequestHeader = Prototype.emptyFunction;
+                    },
+                    onSuccess: function(response) {
+                        if (response.getResponseHeader('Content-Type') === 'text/javascript') {
+                            try {
+                                var functionCall = new Function(response.responseText);
+                            } catch (e) {
+                                if (e instanceof SyntaxError) {
+                                    console.log('Syntax error reported in FuturePay js: ' + e.message);
                                 }
-                            });
-                        } else {
-                            //  not enough credit available
-                            $('FP_applicationForm').update(FP_Messages['FPE00018']);
-                        }
-                    } else {
-                        console.log('FP FAIL RESPONSE', data.code, FP_Messages[data.code]);
-                        // fp didn't accept them - insert the error into $('FP_applicationForm')
-                        // or maybe this is handled by FP.setValidationErrorCallback?
+                            }
+                            if (typeof(functionCall) === 'function') {
+                                // this is the FP object
+                                functionCall();
+                                
+                                FP.handleResponse = function(data)
+                                {
+                                    if (data.status == '1') {
+                                        if (data.object.available_credit >= <?php echo $grandTotal; ?>) {
 
-                        // sometimes, we'll get this error: The Initialization Token has expired
-                        // we'll need to re-initialize FP
-                        if (typeof(data.code) != 'undefined'
-                                && (typeof(FP_Messages[data.code]) != 'undefined' || data.code == 'FPE00031')) {
+                                            // store the pre-auth token returned by futurepay
+                                            // to pass with final order
+                                            new Ajax.Request("<?php echo Mage::getUrl('futurepay/index/storefptoken', array('_secure' => true)); ?>", {
+                                                parameters: data,
+                                                method: 'post',
+                                                onComplete: function(response) {
+
+                                                    // login/application successful - hide the form
+                                                    // and let the user carry on
+                                                    $('FP_applicationForm').update();
+                                                    if ($('payment-buttons-container') !== null) {
+                                                        // allow the user to click "Continue"
+                                                        $('payment-buttons-container').down('button').removeClassName('disabled');
+                                                        $('payment-buttons-container').down('button').writeAttribute("disabled", false);
+                                                    } else if ($('checkout-review') !== null) {
+                                                        $('checkout-review').down('button').removeClassName('disabled');
+                                                        $('checkout-review').down('button').writeAttribute("disabled", false);
+                                                    } else if ($('onestepcheckout-button-place-order') !== null) {
+                                                        $('onestepcheckout-button-place-order').removeClassName('disabled');
+                                                        $('onestepcheckout-button-place-order').writeAttribute('disabled', false);
+                                                        $('onestepcheckout-button-place-order').show()
+                                                        createOnestepButtonPlaceholder();
+                                                        buttonPlaceholderEl.hide();
+                                                    }
+
+                                                    // call the built-in function to move to the next step
+                                                    if (typeof(payment.save) !== 'undefined') {
+                                                        payment.save();
+                                                    }
+                                                }
+                                            });
+                                        } else {
+                                            //  not enough credit available
+                                            $('FP_applicationForm').update(FP_Messages['FPE00018']);
+                                        }
+                                    } else {
+                                        // fp didn't accept them - insert the error into $('FP_applicationForm')
+                                        // or maybe this is handled by FP.setValidationErrorCallback?
+
+                                        // sometimes, we'll get this error: The Initialization Token has expired
+                                        // we'll need to re-initialize FP
+                                        if (typeof(data.code) != 'undefined'
+                                                && (typeof(FP_Messages[data.code]) != 'undefined' || data.code == 'FPE00031')) {
+
+                                            // if the error message is not a failed login
+                                            if (data.code != 'FPE00031') {
+                                                $('FP_applicationForm').update(FP_Messages[data.code]);
+                                            }
+                                        } else {
+                                            $('FP_applicationForm').update('An error occurred, please try again or select another payment method.');
+                                        }
+
+                                        if ($('fp-submit') !== null) {
+                                            $('fp-submit').removeAttribute('disabled');
+                                        }
+                                        if ($('fp-login') !== null) {
+                                            $('fp-login').removeAttribute('disabled');
+                                        }
+
+                                    }
+                                };
+
+                                FP.loadCompleteCallback = function () {
+
+                                    if (typeof($$(':input[name=billing\[firstname\]]')) === 'object'
+                                            && $$(':input[name=billing\[firstname\]]').length > 0) {
+                                        prePopulatedFields.first_name = $$(':input[name=billing\[firstname\]]')[0].value;
+                                    }
+                                    if (typeof($$(':input[name=billing\[lastname\]]')) === 'object'
+                                            && $$(':input[name=billing\[lastname\]]').length > 0) {
+                                        prePopulatedFields.last_name = $$(':input[name=billing\[lastname\]]')[0].value;
+                                    }
+                                    if (typeof($$(':input[name=billing\[postcode\]]')) === 'object'
+                                            && $$(':input[name=billing\[postcode\]]').length > 0) {
+                                        prePopulatedFields.zip = $$(':input[name=billing\[postcode\]]')[0].value;
+                                    }
+                                    if (typeof($$(':input[name^=billing\[street\]]')) === 'object'
+                                            && $$(':input[name^=billing\[street\]]').length > 0) {
+                                        prePopulatedFields.street_address = $$(':input[name^=billing\[street\]]')[0].value;
+                                    }
+                                    if (typeof($$(':input[name=billing\[telephone\]]')) === 'object'
+                                            && $$(':input[name=billing\[telephone\]]').length > 0) {
+                                        prePopulatedFields.phone = $$(':input[name=billing\[telephone\]]')[0].value;
+                                    }
+
+                                    FP.initializeFuturePay(prePopulatedFields);
+
+                                    // Adapt the futurepay HTML to fit the current magento style
+                                    try { $("fp-submit").addClassName("button") } catch (e) {};
+                                    try { $("fp-login").addClassName("button") } catch (e) {};
+
+                                    if ($('fp-submit') !== null) {
+                                        $('fp-submit').observe('click', function () {
+                                            if (FP.isValid()) {
+                                                $('fp-submit').setAttribute('disabled', 'disabled');
+                                            }
+                                        });
+                                    }
+                                    if ($('fp-login') !== null) {
+                                        $('fp-login').observe('click', function () {
+                                            if (FP.isValid()) {
+                                                $('fp-login').setAttribute('disabled', 'disabled');
+                                            }
+                                        });
+                                    }
+
+                                    if ($('fp-signup-form') !== null) {
+
+                                        FP.validateNumber();
+                                        FP.validateZip();
+                                        FP.validateEmail();
+                                        FP.displayErrors();
+
+                                        // hide fields already populated
+                                        $('fp-signup-form').select(':input[type=text]').each(function (el) {
+                                            // unless futurepay marked them with an error
+                                            if (el.value.length > 0 && !el.hasClassName('fp-error')) {
+                                                try { $$('label[for=' + el.name + ']')[0].hide(); } catch (e) {};
+                                                try { $$('.error_' + el.name)[0].hide(); } catch (e) {};
+                                                try { el.hide(); } catch (e) {};
+                                            }
+                                        });
+                                    }
+                                };
+
+                                FP.loadCompleteCallback();
+                                
+                            } else {
+                                $('FP_applicationForm').update('An error occurred, please try again or select another payment method.');
+                            }
                             
-                            // if the error message is not a failed login
-                            if (data.code != 'FPE00031') {
-                                $('FP_applicationForm').update(FP_Messages[data.code]);
-                            }
                         } else {
-                            $('FP_applicationForm').update('An error occurred, please try again or select another payment method.');
-                        }
-                        
-                        if ($('fp-submit') !== null) {
-                            $('fp-submit').removeAttribute('disabled');
-                        }
-                        if ($('fp-login') !== null) {
-                            $('fp-login').removeAttribute('disabled');
-                        }
-                        
-                    }
-                }
-
-                FP.loadCompleteCallback = function () {
-
-                    FP.initializeFuturePay({
-                        element_id: "FP_applicationForm",
-                        first_name: '<?php echo Mage::getSingleton('checkout/session')->getQuote()->getCustomerFirstname(); ?>',
-                        last_name: '<?php echo Mage::getSingleton('checkout/session')->getQuote()->getCustomerLastname(); ?>',
-                        zip: '<?php echo Mage::getSingleton('checkout/session')->getQuote()->getBillingAddress()->getPostcode(); ?>',
-                        street_address: '<?php echo Mage::getSingleton('checkout/session')->getQuote()->getBillingAddress()->getStreet(1); ?>',
-                        phone: '<?php echo Mage::getSingleton('checkout/session')->getQuote()->getBillingAddress()->getTelephone(); ?>'
-                    });
-
-                    // Adapt the futurepay HTML to fit the current magento style
-                    try { $("fp-submit").addClassName("button") } catch (e) {};
-                    try { $("fp-login").addClassName("button") } catch (e) {};
-
-                    if ($('fp-submit') !== null) {
-                        $('fp-submit').observe('click', function () {
-                            if (FP.isValid()) {
-                                $('fp-submit').setAttribute('disabled', 'disabled');
+                            // fp json error - insert the error into $('FP_applicationForm')
+                            // disable the Continue button if futurepay is selected
+                            if (response.responseText) {
+                                var responseObj = response.responseText.evalJSON();
+                                if (typeof(responseObj) == 'object') {
+                                    if (typeof(FP_Messages[responseObj.code]) != 'undefined') {
+                                        $('FP_applicationForm').update(FP_Messages[responseObj.code]);
+                                    } else {
+                                        $('FP_applicationForm').update('An error occurred, please try again or select another payment method.');
+                                    }
+                                }
+                            } else {
+                                $('FP_applicationForm').update('An error occurred, please try again or select another payment method.');
                             }
-                        });
+                        }
+                    },
+                    onException: function () {
+                        // ajax error
+                        $('FP_applicationForm').update('An error occurred, please try again or select another payment method.');
                     }
-                    if ($('fp-login') !== null) {
-                        $('fp-login').observe('click', function () {
-                            if (FP.isValid()) {
-                                $('fp-login').setAttribute('disabled', 'disabled');
-                            }
-                        });
-                    }
-                    
-                    if ($('fp-signup-form') !== null) {
-                        
-                        // force-validate the FP form
-                        //FP.validateForm();
-                        
-                        FP.validateNumber();
-                        FP.validateZip();
-                        FP.validateEmail();
-                        FP.displayErrors();
-                        
-                        // hide fields already populated
-                        $('fp-signup-form').select(':input[type=text]').each(function (el) {
-                            // unless fp marked them with an error
-                            if (el.value.length > 0 && !el.hasClassName('fp-error')) {
-                                try { $$('label[for=' + el.name + ']')[0].hide(); } catch (e) {};
-                                try { $$('.error_' + el.name)[0].hide(); } catch (e) {};
-                                el.hide();
-                            }
-                        });
-                    }
-                    
-                    FP_Initialized = true;          
-                }
-
-                FP.loadCompleteCallback();
+                });
             }
         });
     } else {
-        // the user has to select another payment option
+        // ask the user to select another payment option
         $('FP_applicationForm').update('FuturePay is not available at this time. Please select another payment method.');
     }
 </script>

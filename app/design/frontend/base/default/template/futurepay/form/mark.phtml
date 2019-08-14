@@ -1,15 +1,18 @@
 <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600' rel='stylesheet' type='text/css'>
-<?php if (substr(Mage::getVersion(), 0, 3) == '1.8' || substr(Mage::getVersion(), 0, 3) == '1.7' || substr(Mage::getVersion(), 0, 3) == '1.6' || substr(Mage::getVersion(), 0, 3) == '1.5') {
+<?php
+// switch the stylesheet based on the magento version
+if (in_array(substr(Mage::getVersion(), 0, 3), array('1.8', '1.7', '1.6', '1.5'))) {
     echo "<link href='". $this->getSkinUrl('futurepay/styles18.css') ."' rel='stylesheet' type='text/css'>";
 } else {
     echo "<link href='". $this->getSkinUrl('futurepay/styles19.css') ."' rel='stylesheet' type='text/css'>";
-} ?>
+}
+?>
 <style>
     <?php if (Mage::getStoreConfig('payment/futurepay/custom_image')): echo "#fp-custom-description { margin-left: 6px; margin-top: 6px; }"; endif; ?>
     <?php if (!Mage::getStoreConfig('payment/futurepay/custom_image') && Mage::getStoreConfig('payment/futurepay/custom_description') == ''): echo "#fp-info { position: relative; right: 5px; top: 8px; }"; endif; ?>
     <?php if (!Mage::getStoreConfig('payment/futurepay/custom_image') && Mage::getStoreConfig('payment/futurepay/custom_description') != ''): echo "#fp-info { position: relative; bottom: 6px; right: 4px; }"; endif; ?>
-    <?php if ((Mage::getStoreConfig('payment/futurepay/custom_description') != '') && (substr(Mage::getVersion(), 0, 3) == '1.8' || substr(Mage::getVersion(), 0, 3) == '1.7' || substr(Mage::getVersion(), 0, 3) == '1.6' || substr(Mage::getVersion(), 0, 3) == '1.5')): echo "#fp-info { position: relative; bottom: 0px; right: 0px; left: 5px; }"; endif; ?>
-    <?php if ((Mage::getStoreConfig('payment/futurepay/custom_description') == '') && (substr(Mage::getVersion(), 0, 3) == '1.8' || substr(Mage::getVersion(), 0, 3) == '1.7' || substr(Mage::getVersion(), 0, 3) == '1.6' || substr(Mage::getVersion(), 0, 3) == '1.5')): echo "#fp-info { position: relative; bottom: 0px; right: 2px; left: 5px; }"; endif; ?>
+    <?php if ((Mage::getStoreConfig('payment/futurepay/custom_description') != '') && in_array(substr(Mage::getVersion(), 0, 3), array('1.8', '1.7', '1.6', '1.5'))): echo "#fp-info { position: relative; bottom: 0px; right: 0px; left: 5px; }"; endif; ?>
+    <?php if ((Mage::getStoreConfig('payment/futurepay/custom_description') == '') && in_array(substr(Mage::getVersion(), 0, 3), array('1.8', '1.7', '1.6', '1.5'))): echo "#fp-info { position: relative; bottom: 0px; right: 2px; left: 5px; }"; endif; ?>
 </style>
 <div id="fp-info-popup" style="z-index:15; position: absolute; display:none; top:0;">
                 <div class="fpInfo">
@@ -52,8 +55,6 @@
     if (Mage::getStoreConfig('payment/futurepay/custom_description') != '') {
         echo '<span id="fp-custom-description">' . Mage::getStoreConfig('payment/futurepay/custom_description') . '</span>';
     }
-    //var_dump(Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA));
-    //var_dump(Mage::getStoreConfig('payment/futurepay/custom_image'));
 ?>
 <a id="fp-info" href="#" onclick="return false;"><?php echo $this->__('Learn More'); ?></a>
 <!-- FuturePay Logo -->
@@ -63,8 +64,8 @@ $('fp-info').observe('click', function (e) {
         var overlay = new Element('div');
         overlay.id = 'fp-info-overlay';
         overlay.setStyle({
-            'top': 0, // e.clientY - (overlay.getHeight() / 2), // center around pointer?
-            'left': 0, // e.clientY - (overlay.getWidth() / 2), // center around pointer?
+            'top': 0,
+            'left': 0,
             'width': '100%',
             'height': '100%',
             'opacity': 0.5,
@@ -83,22 +84,17 @@ $('fp-info').observe('click', function (e) {
             $('fp-info-popup').hide();
             overlay.remove();
         });
-        <?php if (substr(Mage::getVersion(), 0, 3) == '1.8' || substr(Mage::getVersion(), 0, 3) == '1.7' || substr(Mage::getVersion(), 0, 3) == '1.6' || substr(Mage::getVersion(), 0, 3) == '1.5') { ?>
+        <?php if (in_array(substr(Mage::getVersion(), 0, 3), array('1.8', '1.7', '1.6', '1.5'))) { ?>
             $('fp-info-popup').setStyle({
                 'left': '15%',
                 'right': '15%',
-    //            'top': e.clientY - (overlay.getHeight() / 2),
-    //            'left': e.clientY - (overlay.getWidth() / 2)
                 'top': '5%',
                 'position': 'fixed',
                 'background-color': '#FFFFFF',
-                //'padding': '20px',
             });
         <?php } else { ?>
             $('fp-info-popup').setStyle({
                 'left': 0
-    //            'top': e.clientY - (overlay.getHeight() / 2),
-    //            'left': e.clientY - (overlay.getWidth() / 2)
             });
         <?php } ?>
         $('fp-info-popup').show();
