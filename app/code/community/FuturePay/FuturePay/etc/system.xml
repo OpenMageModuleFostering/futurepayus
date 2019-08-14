@@ -1,0 +1,209 @@
+<?xml version="1.0"?>
+
+<config>
+
+   <sections>
+
+        <payment translate="label" module="payment">
+
+            <groups>
+                <futurepay_notice translate="label" module="futurepay">
+                    <frontend_model>futurepay/adminhtml_system_config_fieldset_hint</frontend_model>
+                    <help_link>http://www.futurepay.com</help_link>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                </futurepay_notice>
+            	 <futurepay translate="label">
+
+                    <label>FuturePay</label>
+
+                    <frontend_type>text</frontend_type>
+
+                    <sort_order>26</sort_order>
+
+                    <show_in_default>1</show_in_default>
+
+                    <show_in_website>1</show_in_website>
+
+                    <show_in_store>1</show_in_store>
+                    <comment><![CDATA[<div id="futurepay-ajax-container"></div>]]></comment>
+                    <fields>
+
+                        <active translate="label">
+
+                            <label>Enabled</label>
+
+                            <frontend_type>select</frontend_type>
+
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+
+                            <sort_order>10</sort_order>
+
+                            <show_in_default>1</show_in_default>
+
+                            <show_in_website>1</show_in_website>
+
+                            <show_in_store>0</show_in_store>
+
+                        </active>
+                        
+                        <custom_select translate="label">
+
+                            <label>Title</label>
+
+                            <frontend_type>select</frontend_type>
+                            
+                            <source_model>futurepay/source_title_custom</source_model>
+
+                            <sort_order>22</sort_order>
+
+                            <show_in_default>1</show_in_default>
+
+                            <show_in_website>1</show_in_website>
+
+                            <show_in_store>0</show_in_store>
+
+                        </custom_select>
+                        
+                        <custom_description translate="label">
+
+                            <label>Custom Title</label>
+
+                            <frontend_type>text</frontend_type>
+
+                            <sort_order>25</sort_order>
+
+                            <show_in_default>1</show_in_default>
+
+                            <show_in_website>1</show_in_website>
+
+                            <show_in_store>1</show_in_store>
+
+                        </custom_description>
+                        
+                        <custom_image translate="label">
+
+                            <label>Custom Image</label>
+
+                            <frontend_type>image</frontend_type>
+                            
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            
+                            <upload_dir config="system/filesystem/media" scope_info="1">futurepay</upload_dir>
+                            
+                            <base_url type="media" scope_info="1">futurepay</base_url>
+
+                            <sort_order>27</sort_order>
+
+                            <show_in_default>1</show_in_default>
+
+                            <show_in_website>1</show_in_website>
+
+                            <show_in_store>1</show_in_store>
+
+                        </custom_image>
+
+                         <gmid translate="label">
+
+                            <label>Merchant API</label>
+
+                            <show_in_default>1</show_in_default>
+
+                            <show_in_website>1</show_in_website>
+
+                            <sort_order>30</sort_order>
+
+                            <frontend_class>required-entry</frontend_class>
+
+                        </gmid>
+
+
+                        <order_status translate="label">
+
+                            <label>New Order Status</label>
+
+                            <frontend_type>select</frontend_type>
+
+                            <source_model>futurepay/source_order_status</source_model>
+
+                            <sort_order>60</sort_order>
+
+                            <show_in_default>1</show_in_default>
+
+                            <show_in_website>1</show_in_website>
+
+                            <show_in_store>0</show_in_store>
+
+                            <frontend_class>required-entry</frontend_class>
+
+                        </order_status>
+
+                        <is_sandbox_mode translate="label">
+
+                            <label>Sandbox Mode</label>
+
+                            <frontend_type>select</frontend_type>
+
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+
+                            <sort_order>70</sort_order>
+
+                            <show_in_default>1</show_in_default>
+
+                            <show_in_website>1</show_in_website>
+
+                            <show_in_store>0</show_in_store>
+
+                            <frontend_class>required-entry</frontend_class>
+
+                        </is_sandbox_mode>
+                        
+						<auto_invoice translate="label">
+
+                            <label>Toggle Create Invoice</label>
+
+                            <frontend_type>select</frontend_type>
+
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+
+                            <sort_order>80</sort_order>
+
+                            <show_in_default>1</show_in_default>
+
+                            <show_in_website>1</show_in_website>
+
+                            <show_in_store>0</show_in_store>
+
+                            <frontend_class>required-entry</frontend_class>
+
+                        </auto_invoice>
+                        
+                        <sort_order translate="label">
+
+                            <label>Sort Order</label>
+
+                            <frontend_type>text</frontend_type>
+
+                            <sort_order>100</sort_order>
+
+                            <show_in_default>1</show_in_default>
+
+                            <show_in_website>1</show_in_website>
+
+                            <show_in_store>0</show_in_store>
+
+                        </sort_order>
+
+                    </fields>
+
+                </futurepay>
+
+            </groups>
+
+        </payment>
+
+    </sections>
+
+</config>

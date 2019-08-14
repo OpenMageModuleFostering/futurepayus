@@ -1,0 +1,49 @@
+<script type="text/javascript" src="<?php echo $this->getCartIntegrationUrl().$this->getToken()?>"></script>
+<div class="futurepay-container">
+	<div id="futurepay-form">
+	</div>
+	<div class="button-container futurepay-button-container">
+		<button id="place_order" class="futurepay-placeorder"><span><span><?php echo $this->__('Pay with Futurepay')?></span></span></button>
+		<a href="<?php echo $this->getCalcelUrl();?>"><?php echo $this->__('Cancel Order')?></a>
+	</div>
+</div>
+<div class="fp-loading-indicator" id="fp-loading-validate-trans" style="display: none;"><label id="fp-loading-label" class="fp-loading-label"><?php echo $this->__('Validating the transaction ...')?>.</label></div>
+<script type="text/javascript">
+if(typeof(jQuery) != 'undefined'){
+	jQuery.noConflict();
+}
+Event.observe(window,'load',function(){
+	FP.CartIntegration();
+	$('futurepay-form').update(FP.CartIntegration.getFormContent());
+	
+	FP.CartIntegration.displayFuturePay();
+	/*Bind the Pages pay button to the FuturePay submit action*/
+	$("place_order").observe('click' , function() {
+		FP.CartIntegration();
+		FP.CartIntegration.placeOrder();
+	});
+});
+
+		
+function FuturePayResponseHandler(response) {
+	if (response.error) {
+		error_code = response.code;
+		error_reason = response.message;
+		setLocation('<?php echo $this->getErrorUrl()?>error_code/'+error_code+'/error_reason/'+error_reason);	 
+	} else {
+		$('fp_lean_overlay').setStyle({display:'block'});
+		$('fp-loading-validate-trans').setStyle({display:'block'});
+		new Ajax.Request('<?php echo $this->getSuccessUrl();?>', {
+			method: 'post',
+			parameters: {transaction_id:response.transaction_id,status:response.status, code:response.code, message:response.message},
+			onSuccess: function(response1) {
+				var res	= response1.responseText.evalJSON(true);
+				var redirectUrl = res.url;
+				setLocation(redirectUrl);
+				/*$('fp_lean_overlay').setStyle({display:'none'});
+				$('fp-loading-validate-trans').setStyle({display:'none'});*/
+			}
+		});
+	}
+}
+</script>

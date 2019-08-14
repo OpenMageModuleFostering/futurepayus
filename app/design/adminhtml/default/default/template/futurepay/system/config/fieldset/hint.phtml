@@ -1,0 +1,10 @@
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('futurepay/styles.css'); ?>">
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('futurepay/futurepay-admin.js'); ?>"></script>
+<script type="text/javascript">
+FuturePayAdmin.loginTplEndpoint = '<?php echo Mage::getUrl('futurepay/index/getmerchantloginform'); ?>';
+FuturePayAdmin.signupTplEndpoint =  '<?php echo Mage::getUrl('futurepay/index/getmerchantsignupform'); ?>';
+FuturePayAdmin.signupLoginTplEndpoint = '<?php echo Mage::getUrl('futurepay/index/getsignuploginform'); ?>';
+FuturePayAdmin.countryRegionsEndpoint = '<?php echo Mage::getUrl('futurepay/index/getcountryregions'); ?>';
+FuturePayAdmin.merchantLoginEndpoint = '<?php echo Mage::getUrl('futurepay/index/domerchantlogin'); ?>';
+FuturePayAdmin.merchantSignupEndpoint = '<?php echo Mage::getUrl('futurepay/index/domerchantsignup'); ?>';
+</script>

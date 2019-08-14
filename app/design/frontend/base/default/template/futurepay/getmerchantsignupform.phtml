@@ -1,0 +1,76 @@
+<?php
+$countryList = Mage::getModel('directory/country')->getResourceCollection()
+                            ->loadByStore()
+                            ->toOptionArray();
+array_shift($countryList);
+
+$storeCountryCode = Mage::getStoreConfig('general/country/default');
+
+$regionList = Mage::getModel('directory/region')
+    ->getResourceCollection()
+    ->addCountryFilter($storeCountryCode)
+    ->load()
+    ->toArray();
+
+?>
+<h3>FuturePay Merchant Signup</h3>
+<div class="fm-group">
+    <label class="col-lt">Email Address</label>
+    <div class="col-rt"><input class="fm-input" type="text" name="futurepay_contact_email" value=""/></div>
+</div>
+<div class="fm-group">
+    <label class="col-lt">First Name</label>
+    <div class="col-rt"><input class="fm-input" type="text" name="futurepay_first_name" value=""/></div>
+</div>
+<div class="fm-group">
+    <label class="col-lt">Last Name</label>
+    <div class="col-rt"><input class="fm-input" type="text" name="futurepay_last_name" value=""/></div>
+</div>
+<div class="fm-group">
+    <label class="col-lt">Phone Number</label>
+    <div class="col-rt"><input class="fm-input" type="text" name="futurepay_main_phone"/></div>
+</div>
+<div class="fm-group">
+    <label class="col-lt">Company Name</label>
+    <div class="col-rt"><input class="fm-input" type="text" name="futurepay_name" value=""/></div>
+</div>
+<div class="fm-group">
+    <label class="col-lt">Website</label>
+    <div class="col-rt"><input class="fm-input" type="text" name="futurepay_website" value=""/></div>
+</div>
+<div class="fm-group">
+    <label class="col-lt">Country</label>
+    <div class="col-rt">
+        <select name="futurepay_country_code" onchange="FuturePayAdmin.refreshRegionsForCountry(this);">
+            <?php foreach ($countryList as $countryItem) { ?>
+            <option value="<?php echo $countryItem['value']; ?>"<?php if ($storeCountryCode == $countryItem['value']) {?> selected="selected"<?php } ?>><?php echo $countryItem['label']; ?></option>
+            <?php } ?>
+        </select>
+    </div>
+</div>
+<div class="fm-group">
+    <label class="col-lt">State</label>
+    <div class="col-rt">
+        <select id="futurepay-region-code" name="futurepay_region_code">
+            <?php foreach ($regionList['items'] as $regionItem) { ?>
+            <option value="<?php echo $regionItem['code']; ?>"><?php echo $regionItem['name']; ?></option>
+            <?php } ?>
+        </select>
+    </div>
+</div>
+<div class="fm-group">
+    <label class="col-lt">Address</label>
+    <div class="col-rt"><input class="fm-input" type="text" name="futurepay_address"/></div>
+</div>
+<div class="fm-group">
+    <label class="col-lt">City</label>
+    <div class="col-rt"><input class="fm-input" type="text" name="futurepay_city"/></div>
+</div>
+<div class="fm-group">
+    <label class="col-lt">Zip Code</label>
+    <div class="col-rt"><input class="fm-input" type="text" name="futurepay_zip"/></div>
+</div>
+<div class="fm-group">
+    <div class="col-rt"><input class="fm-btn" type="button" name="futurepay_save" value="Sign up" onclick="FuturePayAdmin.doMerchantSignup(); return false;"/></div>
+</div>
+<div style='clear:both'></div>

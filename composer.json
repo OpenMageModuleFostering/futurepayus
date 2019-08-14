@@ -1,0 +1,16 @@
+{
+    "name": "OpenMageModuleFostering/FuturePayUS",
+    "type": "magento-module",
+    "license": "OSL",
+    "homepage": "",
+    "description": "FuturePay Payment method",
+    "authors": [
+    {
+        "name": "FuturePay",
+        "email": "support@futurepay.com"
+    }
+],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}

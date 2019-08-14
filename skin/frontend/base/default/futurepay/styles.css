@@ -1,0 +1,8 @@
+.futurepay-container{padding: 10px 20px; border: 1px solid #d3d3d3;}
+.futurepay-button-container{display: block; margin-top: 20px;}
+.futurepay-button-container button.futurepay-placeorder {height: 35px;border: 0 none;border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;background-color: #0B9EDE;font-weight: bold;transition:			color 300ms ease-in-out, background-color 300ms ease-in-out;-moz-transition: color 300ms ease-in-out, background-color 300ms ease-in-out;-webkit-transition: color 300ms ease-in-out, background-color 300ms ease-in-out;-o-transition:	color 300ms ease-in-out, background-color 300ms ease-in-out;}
+.futurepay-button-container button.futurepay-placeorder span{color: #FFF;}
+.futurepay-button-container button.futurepay-placeorder:hover{background-color: #037BB0;}
+.futurepay-button-container button.futurepay-placeorder span span {height: 35px;line-height: 35px;padding: 0 25px;}
+.futurepay-container div.fp-purchase-static label.error{margin-bottom: 7px;}
+.futurepay-container p.fp-need-account{margin: 10px;}

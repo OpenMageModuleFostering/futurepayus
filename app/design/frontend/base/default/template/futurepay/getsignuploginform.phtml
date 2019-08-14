@@ -1,0 +1,45 @@
+<?php if (Mage::getStoreConfig('payment/futurepay/custom_image')) {?>
+<style>
+    #payment_futurepay_custom_image {
+        color: transparent;
+    }
+</style>
+<?php } ?>
+<div id="futurepay-merchant-signup-login">
+    <div class="futurepay-logo"></div>
+    In order to use FuturePay, you must either <a id="do-merchant-signup" onclick="FuturePayAdmin.doMerchantSignupClick(); return false;" href="#">sign-up</a> or <a id="do-merchant-login" onclick="FuturePayAdmin.doMerchantLoginClick(); return false;" href="#">log in</a> to retrieve your API key.
+</div>
+<div id="futurepay-merchant-login" style="display:none;"></div>
+<div id="futurepay-merchant-signup" style="display:none;"></div>
+<script type="text/javascript">
+    var image_checkbox = document.getElementById('payment_futurepay_custom_image_delete');
+    var description_box = document.getElementById('payment_futurepay_custom_description');
+    var custom_select = document.getElementById('payment_futurepay_custom_select');
+    
+    function fpCustomImageDescription() {
+        if (custom_select.selectedIndex === 1) {
+            $('row_payment_futurepay_custom_image').show();
+            if (image_checkbox && image_checkbox.getAttribute('checked') === 'checked') {
+                image_checkbox.removeAttribute('checked');
+            }
+            $('row_payment_futurepay_custom_description').show();
+        } else {
+            $('row_payment_futurepay_custom_image').hide();
+            if (image_checkbox && !image_checkbox.getAttribute('checked')) {
+                image_checkbox.setAttribute('checked', 'checked');
+            }
+            $('row_payment_futurepay_custom_description').hide();
+            description_box.value = '';
+        }
+    }
+    
+    $('payment_futurepay_custom_select').observe('change', function(event) {
+        fpCustomImageDescription();
+    });
+    
+    fpCustomImageDescription();
+    
+    $('payment_futurepay_custom_image').observe('click', function(event) {
+        document.getElementById('payment_futurepay_custom_image').style.color = "#000000";
+    });
+</script>

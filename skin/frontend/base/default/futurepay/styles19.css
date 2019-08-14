@@ -1,0 +1,863 @@
+.FP_redirectmessage {
+  font-size: medium;
+  line-height: 1;
+  direction: ltr;
+  text-align: left;
+  text-align: start;
+  color: black;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: none;
+  list-style-type: disc;
+  background-color: white;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.FP_redirectmessage h1,
+.FP_redirectmessage h2,
+.FP_redirectmessage h3,
+.FP_redirectmessage h4,
+.FP_redirectmessage h5,
+.FP_redirectmessage h6,
+.FP_redirectmessage p,
+.FP_redirectmessage td,
+.FP_redirectmessage dl,
+.FP_redirectmessage tr,
+.FP_redirectmessage dt,
+.FP_redirectmessage ol,
+.FP_redirectmessage form,
+.FP_redirectmessage select,
+.FP_redirectmessage option,
+.FP_redirectmessage pre,
+.FP_redirectmessage div,
+.FP_redirectmessage table,
+.FP_redirectmessage th,
+.FP_redirectmessage tbody,
+.FP_redirectmessage tfoot,
+.FP_redirectmessage caption,
+.FP_redirectmessage thead,
+.FP_redirectmessage ul,
+.FP_redirectmessage li,
+.FP_redirectmessage address,
+.FP_redirectmessage blockquote,
+.FP_redirectmessage dd,
+.FP_redirectmessage fieldset,
+.FP_redirectmessage li,
+.FP_redirectmessage iframe,
+.FP_redirectmessage strong,
+.FP_redirectmessage legend,
+.FP_redirectmessage em,
+.FP_redirectmessage summary,
+.FP_redirectmessage cite,
+.FP_redirectmessage span,
+.FP_redirectmessage input,
+.FP_redirectmessage sup,
+.FP_redirectmessage label,
+.FP_redirectmessage dfn,
+.FP_redirectmessage object,
+.FP_redirectmessage big,
+.FP_redirectmessage q,
+.FP_redirectmessage samp,
+.FP_redirectmessage acronym,
+.FP_redirectmessage small,
+.FP_redirectmessage img,
+.FP_redirectmessage strike,
+.FP_redirectmessage code,
+.FP_redirectmessage sub,
+.FP_redirectmessage ins,
+.FP_redirectmessage textarea,
+.FP_redirectmessage button,
+.FP_redirectmessage var,
+.FP_redirectmessage a,
+.FP_redirectmessage abbr,
+.FP_redirectmessage applet,
+.FP_redirectmessage del,
+.FP_redirectmessage kbd,
+.FP_redirectmessage tt,
+.FP_redirectmessage b,
+.FP_redirectmessage i,
+.FP_redirectmessage hr,
+.FP_redirectmessage article,
+.FP_redirectmessage aside,
+.FP_redirectmessage figure,
+.FP_redirectmessage figcaption,
+.FP_redirectmessage footer,
+.FP_redirectmessage header,
+.FP_redirectmessage menu,
+.FP_redirectmessage nav,
+.FP_redirectmessage section,
+.FP_redirectmessage time,
+.FP_redirectmessage mark,
+.FP_redirectmessage audio,
+.FP_redirectmessage video,
+.FP_redirectmessage abbr,
+.FP_redirectmessage address,
+.FP_redirectmessage area,
+.FP_redirectmessage blockquote,
+.FP_redirectmessage canvas,
+.FP_redirectmessage caption,
+.FP_redirectmessage cite,
+.FP_redirectmessage code,
+.FP_redirectmessage colgroup,
+.FP_redirectmessage col,
+.FP_redirectmessage datalist,
+.FP_redirectmessage fieldset,
+.FP_redirectmessage main,
+.FP_redirectmessage map,
+.FP_redirectmessage meta,
+.FP_redirectmessage optgroup,
+.FP_redirectmessage output,
+.FP_redirectmessage progress {
+  background-attachment: scroll;
+  background-color: transparent;
+  background-image: none;
+  background-position: 0 0;
+  background-repeat: repeat;
+  border-color: black;
+  border-color: currentColor;
+  border-style: none;
+  border-width: medium;
+  bottom: auto;
+  clear: none;
+  clip: auto;
+  color: inherit;
+  counter-increment: none;
+  counter-reset: none;
+  cursor: auto;
+  direction: inherit;
+  display: inline;
+  float: none;
+  font-family: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  font-variant: normal;
+  font-weight: inherit;
+  height: auto;
+  left: auto;
+  letter-spacing: normal;
+  line-height: inherit;
+  list-style-type: inherit;
+  list-style-position: outside;
+  list-style-image: none;
+  margin: 0;
+  max-height: none;
+  max-width: none;
+  min-height: 0;
+  min-width: 0;
+  opacity: 1;
+  outline: invert none medium;
+  overflow: visible;
+  padding: 0;
+  position: static;
+  quotes: "" "";
+  right: auto;
+  table-layout: auto;
+  text-align: inherit;
+  text-decoration: inherit;
+  text-indent: 0;
+  text-transform: none;
+  top: auto;
+  unicode-bidi: normal;
+  vertical-align: baseline;
+  visibility: inherit;
+  white-space: normal;
+  width: auto;
+  word-spacing: normal;
+  z-index: auto;
+  -webkit-background-origin: padding-box;
+  background-origin: padding-box;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  -webkit-background-size: auto;
+  -moz-background-size: auto;
+  background-size: auto;
+  -webkit-border-image: none;
+  -moz-border-image: none;
+  -o-border-image: none;
+  border-image: none;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  -webkit-column-count: auto;
+  -moz-column-count: auto;
+  column-count: auto;
+  -webkit-column-gap: normal;
+  -moz-column-gap: normal;
+  column-gap: normal;
+  -webkit-column-rule: medium none black;
+  -moz-column-rule: medium none black;
+  column-rule: medium none black;
+  -webkit-column-span: 1;
+  -moz-column-span: 1;
+  column-span: 1;
+  -webkit-column-width: auto;
+  -moz-column-width: auto;
+  column-width: auto;
+  font-feature-settings: normal;
+  overflow-x: visible;
+  overflow-y: visible;
+  -webkit-hyphens: manual;
+  -moz-hyphens: manual;
+  hyphens: manual;
+  -webkit-perspective: none;
+  -moz-perspective: none;
+  -ms-perspective: none;
+  -o-perspective: none;
+  perspective: none;
+  -webkit-perspective-origin: 50% 50%;
+  -moz-perspective-origin: 50% 50%;
+  -ms-perspective-origin: 50% 50%;
+  -o-perspective-origin: 50% 50%;
+  perspective-origin: 50% 50%;
+  -webkit-backface-visibility: visible;
+  -moz-backface-visibility: visible;
+  -ms-backface-visibility: visible;
+  -o-backface-visibility: visible;
+  backface-visibility: visible;
+  text-shadow: none;
+  -webkit-transition: all 0s ease 0s;
+  transition: all 0s ease 0s;
+  -webkit-transform: none;
+  -moz-transform: none;
+  -ms-transform: none;
+  -o-transform: none;
+  transform: none;
+  -webkit-transform-origin: 50% 50%;
+  -moz-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  -o-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  -webkit-transform-style: flat;
+  -moz-transform-style: flat;
+  -ms-transform-style: flat;
+  -o-transform-style: flat;
+  transform-style: flat;
+  word-break: normal;
+}
+.FP_redirectmessage h3,
+.FP_redirectmessage h5,
+.FP_redirectmessage p,
+.FP_redirectmessage h1,
+.FP_redirectmessage dl,
+.FP_redirectmessage dt,
+.FP_redirectmessage h6,
+.FP_redirectmessage ol,
+.FP_redirectmessage form,
+.FP_redirectmessage option,
+.FP_redirectmessage pre,
+.FP_redirectmessage div,
+.FP_redirectmessage h2,
+.FP_redirectmessage caption,
+.FP_redirectmessage h4,
+.FP_redirectmessage ul,
+.FP_redirectmessage address,
+.FP_redirectmessage blockquote,
+.FP_redirectmessage dd,
+.FP_redirectmessage fieldset,
+.FP_redirectmessage hr,
+.FP_redirectmessage article,
+.FP_redirectmessage dialog,
+.FP_redirectmessage figure,
+.FP_redirectmessage footer,
+.FP_redirectmessage header,
+.FP_redirectmessage hgroup,
+.FP_redirectmessage menu,
+.FP_redirectmessage nav,
+.FP_redirectmessage section,
+.FP_redirectmessage audio,
+.FP_redirectmessage video,
+.FP_redirectmessage address,
+.FP_redirectmessage blockquote,
+.FP_redirectmessage colgroup,
+.FP_redirectmessage main,
+.FP_redirectmessage progress,
+.FP_redirectmessage summary {
+  display: block;
+}
+.FP_redirectmessage h1,
+.FP_redirectmessage h2,
+.FP_redirectmessage h3,
+.FP_redirectmessage h4,
+.FP_redirectmessage h5,
+.FP_redirectmessage h6 {
+  font-weight: bold;
+}
+.FP_redirectmessage h1 {
+  font-size: 2em;
+  padding: .67em 0;
+}
+.FP_redirectmessage h2 {
+  font-size: 1.5em;
+  padding: .83em 0;
+}
+.FP_redirectmessage h3 {
+  font-size: 1.17em;
+  padding: .83em 0;
+}
+.FP_redirectmessage h4 {
+  font-size: 1em;
+}
+.FP_redirectmessage h5 {
+  font-size: .83em;
+}
+.FP_redirectmessage p {
+  margin: 1em 0;
+}
+.FP_redirectmessage table {
+  display: table;
+}
+.FP_redirectmessage thead {
+  display: table-header-group;
+}
+.FP_redirectmessage tbody {
+  display: table-row-group;
+}
+.FP_redirectmessage tfoot {
+  display: table-footer-group;
+}
+.FP_redirectmessage tr {
+  display: table-row;
+}
+.FP_redirectmessage th,
+.FP_redirectmessage td {
+  display: table-cell;
+  padding: 2px;
+}
+.FP_redirectmessage ol,
+.FP_redirectmessage ul {
+  margin: 1em 0;
+}
+.FP_redirectmessage ul li,
+.FP_redirectmessage ul ul li,
+.FP_redirectmessage ul ul ul li,
+.FP_redirectmessage ol li,
+.FP_redirectmessage ol ol li,
+.FP_redirectmessage ol ol ol li,
+.FP_redirectmessage ul ol ol li,
+.FP_redirectmessage ul ul ol li,
+.FP_redirectmessage ol ul ul li,
+.FP_redirectmessage ol ol ul li {
+  list-style-position: inside;
+  margin-top: .08em;
+}
+.FP_redirectmessage ol ol,
+.FP_redirectmessage ol ol ol,
+.FP_redirectmessage ul ul,
+.FP_redirectmessage ul ul ul,
+.FP_redirectmessage ol ul,
+.FP_redirectmessage ol ul ul,
+.FP_redirectmessage ol ol ul,
+.FP_redirectmessage ul ol,
+.FP_redirectmessage ul ol ol,
+.FP_redirectmessage ul ul ol {
+  padding-left: 40px;
+  margin: 0;
+}
+.FP_redirectmessage nav ul,
+.FP_redirectmessage nav ol {
+  list-style-type: none;
+}
+.FP_redirectmessage ul,
+.FP_redirectmessage menu {
+  list-style-type: disc;
+}
+.FP_redirectmessage ol {
+  list-style-type: decimal;
+}
+.FP_redirectmessage ol ul,
+.FP_redirectmessage ul ul,
+.FP_redirectmessage menu ul,
+.FP_redirectmessage ol menu,
+.FP_redirectmessage ul menu,
+.FP_redirectmessage menu menu {
+  list-style-type: circle;
+}
+.FP_redirectmessage ol ol ul,
+.FP_redirectmessage ol ul ul,
+.FP_redirectmessage ol menu ul,
+.FP_redirectmessage ol ol menu,
+.FP_redirectmessage ol ul menu,
+.FP_redirectmessage ol menu menu,
+.FP_redirectmessage ul ol ul,
+.FP_redirectmessage ul ul ul,
+.FP_redirectmessage ul menu ul,
+.FP_redirectmessage ul ol menu,
+.FP_redirectmessage ul ul menu,
+.FP_redirectmessage ul menu menu,
+.FP_redirectmessage menu ol ul,
+.FP_redirectmessage menu ul ul,
+.FP_redirectmessage menu menu ul,
+.FP_redirectmessage menu ol menu,
+.FP_redirectmessage menu ul menu,
+.FP_redirectmessage menu menu menu {
+  list-style-type: square;
+}
+.FP_redirectmessage li {
+  display: list-item;
+  min-height: auto;
+  min-width: auto;
+  padding-left: 20px;
+}
+.FP_redirectmessage strong {
+  font-weight: bold;
+}
+.FP_redirectmessage em {
+  font-style: italic;
+}
+.FP_redirectmessage kbd,
+.FP_redirectmessage samp,
+.FP_redirectmessage code,
+.FP_redirectmessage pre {
+  font-family: monospace;
+}
+.FP_redirectmessage a {
+  color: blue;
+  text-decoration: underline;
+}
+.FP_redirectmessage a:visited {
+  color: #529;
+}
+.FP_redirectmessage a,
+.FP_redirectmessage a *,
+.FP_redirectmessage input[type=submit],
+.FP_redirectmessage input[type=radio],
+.FP_redirectmessage input[type=checkbox],
+.FP_redirectmessage select {
+  cursor: pointer;
+}
+.FP_redirectmessage button,
+.FP_redirectmessage input[type=submit],
+.FP_redirectmessage input[type=submit]:hover,
+.FP_redirectmessage input[type=submit]:active {
+  text-align: center;
+  padding: 2px 6px 3px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-family: arial, helvetica, sans-serif;
+  font-size: small;
+  background: white;
+  -webkit-appearance: push-button;
+  color: buttontext;
+  border: 1px #a6a6a6 solid;
+  background: lightgrey;
+  background: #ffffff;
+  background: -moz-linear-gradient(top, #ffffff 0%, #dddddd 100%, #d1d1d1 100%, #dddddd 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(100%, #dddddd), color-stop(100%, #d1d1d1), color-stop(100%, #dddddd));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #ffffff 0%, #dddddd 100%, #d1d1d1 100%, #dddddd 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #ffffff 0%, #dddddd 100%, #d1d1d1 100%, #dddddd 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #ffffff 0%, #dddddd 100%, #d1d1d1 100%, #dddddd 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #ffffff 0%, #dddddd 100%, #d1d1d1 100%, #dddddd 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#dddddd', GradientType=0);
+  /* IE6-9 */
+  -webkit-box-shadow: 1px 1px 0px #eee;
+  -moz-box-shadow: 1px 1px 0px #eee;
+  -o-box-shadow: 1px 1px 0px #eee;
+  box-shadow: 1px 1px 0px #eee;
+  outline: initial;
+}
+.FP_redirectmessage button {
+  padding: 1px 6px 2px 6px;
+  margin-right: 5px;
+}
+.FP_redirectmessage input[type=hidden] {
+  display: none;
+}
+.FP_redirectmessage textarea {
+  -webkit-appearance: textarea;
+  background: white;
+  padding: 2px;
+  margin-left: 4px;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  font-size: 11px;
+  font-family: arial, helvetica, sans-serif;
+  line-height: 13px;
+  resize: both;
+}
+.FP_redirectmessage select,
+.FP_redirectmessage textarea,
+.FP_redirectmessage input {
+  border: 1px solid #ccc;
+}
+.FP_redirectmessage select {
+  font-size: 11px;
+  font-family: helvetica, arial, sans-serif;
+  display: inline-block;
+}
+.FP_redirectmessage textarea:focus,
+.FP_redirectmessage input:focus {
+  outline: auto 5px -webkit-focus-ring-color;
+  outline: initial;
+}
+.FP_redirectmessage input[type=text] {
+  background: white;
+  padding: 1px;
+  font-family: initial;
+  font-size: small;
+}
+.FP_redirectmessage input[type=checkbox],
+.FP_redirectmessage input[type=radio] {
+  border: 1px #2b2b2b solid;
+  border-radius: 4px;
+}
+.FP_redirectmessage input[type=checkbox],
+.FP_redirectmessage input[type=radio] {
+  outline: initial;
+}
+.FP_redirectmessage input[type=radio] {
+  margin: 2px 2px 3px 2px;
+}
+.FP_redirectmessage input[type=submit]:active,
+.FP_redirectmessage button:active {
+  background: #3b679e;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #3b679e 0%, #2b88d9 50%, #207cca 51%, #7db9e8 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3b679e), color-stop(50%, #2b88d9), color-stop(51%, #207cca), color-stop(100%, #7db9e8));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #3b679e 0%, #2b88d9 50%, #207cca 51%, #7db9e8 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #3b679e 0%, #2b88d9 50%, #207cca 51%, #7db9e8 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #3b679e 0%, #2b88d9 50%, #207cca 51%, #7db9e8 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #3b679e 0%, #2b88d9 50%, #207cca 51%, #7db9e8 100%);
+  /* W3C */
+  border-color: #5259b0;
+}
+.FP_redirectmessage abbr[title],
+.FP_redirectmessage acronym[title],
+.FP_redirectmessage dfn[title] {
+  cursor: help;
+  border-bottom-width: 1px;
+  border-bottom-style: dotted;
+}
+.FP_redirectmessage ins {
+  background-color: #ff9;
+  color: black;
+}
+.FP_redirectmessage del {
+  text-decoration: line-through;
+}
+.FP_redirectmessage blockquote,
+.FP_redirectmessage q {
+  quotes: none;
+}
+.FP_redirectmessage blockquote:before,
+.FP_redirectmessage blockquote:after,
+.FP_redirectmessage q:before,
+.FP_redirectmessage q:after,
+.FP_redirectmessage li:before,
+.FP_redirectmessage li:after {
+  content: "";
+}
+.FP_redirectmessage input,
+.FP_redirectmessage select {
+  vertical-align: middle;
+}
+.FP_redirectmessage table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.FP_redirectmessage hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+}
+.FP_redirectmessage *[dir=rtl] {
+  direction: rtl;
+}
+.FP_redirectmessage mark {
+  background-color: #ff9;
+  color: black;
+  font-style: italic;
+  font-weight: bold;
+}
+.FP_redirectmessage menu {
+  padding-left: 40px;
+  padding-top: 8px;
+}
+.FP_redirectmessage [hidden],
+.FP_redirectmessage template {
+  display: none;
+}
+.FP_redirectmessage abbr[title] {
+  border-bottom: 1px dotted;
+}
+.FP_redirectmessage sub,
+.FP_redirectmessage sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+.FP_redirectmessage sup {
+  top: -0.5em;
+}
+.FP_redirectmessage sub {
+  bottom: -0.25em;
+}
+.FP_redirectmessage img {
+  border: 0;
+}
+.FP_redirectmessage figure {
+  margin: 0;
+}
+.FP_redirectmessage textarea {
+  overflow: auto;
+  vertical-align: top;
+}
+.FP_redirectmessage pre {
+  white-space: pre;
+}
+.FP_redirectmessage #fp-signup-form,
+.FP_redirectmessage #fp-login-form {
+  max-width: 500px;
+  padding: 10px;
+  margin: 10px;
+  vertical-align: middle;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+.FP_redirectmessage #fp-signup-form .fp-label,
+.FP_redirectmessage #fp-login-form .fp-label {
+  display: block;
+  margin-right: 20px;
+  padding-left: 4px;
+  color: #A0A0A0;
+}
+.FP_redirectmessage #fp-signup-form input,
+.FP_redirectmessage #fp-login-form input,
+.FP_redirectmessage #fp-signup-form select,
+.FP_redirectmessage #fp-login-form select {
+  font-family: Lato, monospace;
+  width: 100%;
+  display: inline-block;
+  font-size: 1em;
+  margin: 5px 10px 10px 10px auto;
+  padding: 0 10px 0 2px;
+  height: 1.9em;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+.FP_redirectmessage #fp-signup-form select,
+.FP_redirectmessage #fp-login-form select {
+  width: 95px;
+  background-color: white;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+.FP_redirectmessage #fp-signup-form #zip,
+.FP_redirectmessage #fp-login-form #zip,
+.FP_redirectmessage #fp-signup-form #main_phone,
+.FP_redirectmessage #fp-login-form #main_phone,
+.FP_redirectmessage #fp-signup-form #ssn,
+.FP_redirectmessage #fp-login-form #ssn {
+  max-width: 325px;
+}
+.FP_redirectmessage #fp-signup-form img,
+.FP_redirectmessage #fp-login-form img {
+  vertical-align: middle;
+  display: inline;
+  margin-bottom: 15px;
+}
+.FP_redirectmessage #fp-signup-form input[type="button"],
+.FP_redirectmessage #fp-login-form input[type="button"] {
+  margin: 0px 15px 15px 0px;
+  height: 22px;
+  display: inline-block;
+  font-size: 1em;
+  margin-right: 100px;
+  text-decoration: none;
+  width: 120px;
+  border-radius: 2px;
+  transition: background-color 0.2s ease-out, border-color 0.2s ease-out, color 0.2s ease-out;
+  padding: 8px;
+  color: #34ABDD;
+  border-color: #34ABDD;
+  border: 2px solid #34ABDD;
+  text-align: center;
+  outline: none;
+}
+.FP_redirectmessage #fp-signup-form input[type="button"]:hover,
+.FP_redirectmessage #fp-login-form input[type="button"]:hover,
+.FP_redirectmessage #fp-signup-form input[type="button"]:active,
+.FP_redirectmessage #fp-login-form input[type="button"]:active {
+  color: white;
+  background-color: rgba(52, 171, 221, 0.8);
+  border-color: rgba(52, 171, 221, 0.8);
+  transition: background-color 0.3s ease-in, border-color 0.3s ease-in, color 0.3s ease-in;
+}
+.FP_redirectmessage #fp-signup-form .fp-signup-link,
+.FP_redirectmessage #fp-login-form .fp-signup-link {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1em;
+  float: none;
+}
+.FP_redirectmessage #fp-signup-form .fp-signup-link:hover,
+.FP_redirectmessage #fp-login-form .fp-signup-link:hover {
+  font-weight: bold;
+  font-size: 1em;
+  float: none;
+}
+.FP_redirectmessage #fp-signup-form input[type="checkbox"].fp-checkbox,
+.FP_redirectmessage #fp-login-form input[type="checkbox"].fp-checkbox {
+  text-align: left;
+  width: 13px;
+  height: 13px;
+  padding: 0;
+  vertical-align: middle;
+}
+.FP_redirectmessage #fp-signup-form .fp-terms-label,
+.FP_redirectmessage #fp-login-form .fp-terms-label {
+  width: 300px;
+  margin-top: 4px;
+}
+.FP_redirectmessage #fp-signup-form .fp-error-element,
+.FP_redirectmessage #fp-login-form .fp-error-element {
+  height: 1.1em;
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+}
+.FP_redirectmessage #fp-signup-form .fp-error-message,
+.FP_redirectmessage #fp-login-form .fp-error-message {
+  font-size: 0.7em;
+  color: #dd6634;
+  margin-bottom: 4px;
+  text-align: left;
+}
+.FP_redirectmessage #fp-signup-form #different-email-info,
+.FP_redirectmessage #fp-login-form #different-email-info {
+  font-size: 0.9em;
+}
+.FP_redirectmessage #fp-signup-form a,
+.FP_redirectmessage #fp-login-form a {
+  margin-left: 0;
+  color: #34ABDD;
+}
+
+.fpWrap .close {
+    color: #aaa;
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 0.5;
+    position: absolute;
+    right: 4px;
+    top: 2px;
+    text-decoration: none;
+}
+
+
+body, html {
+    padding:0px;
+    margin:0px;
+    background-color:#ffffff;
+       
+}
+
+.fpInfo {
+    width: 100%; margin:0 auto; height:auto;box-sizing:border-box;padding: 20px; display:table; background:white;
+}
+
+.fpWrap {
+    width:100%;float:left; border: 1px solid #ddd; font-family: 'Helvetica', Arial, sans-serif;font-size:15px; color: #666666;
+}
+
+.fpInfo h2, .fpInfo h3 {
+    font-family: 'Source Sans Pro', sans-serif; color: rgb(128,195,64); font-weight:300; margin:0px; padding:0px;
+}
+
+.fpInfo h2 {
+    font-size: 46px;
+}
+
+.fpInfo h3 {
+    font-weight:400; text-align: left; margin: 0px 0px 20px; clear:both;
+}
+
+.fpContent, .fpSum {
+    padding: 2% 5% 0%; box-sizing: border-box; line-height: 21px;
+}
+
+.fpContent {
+    float:left; width:100%; border-bottom: 1px solid #ddd;
+}
+
+.fpHeading {
+    border-bottom: 1px solid #ddd; text-align: center; padding: 18px 0;
+}
+
+.fpSum {
+    text-align: center; width: 87%; margin:0 auto;
+}
+
+.fpContent p {
+    margin:0px 0px 16px; padding:0px; text-align: left;
+}
+
+.fpContent img {
+    margin-bottom: 20px;
+}
+
+.fpCol {
+    width:33%;box-sizing:border-box; padding:0% 2% 2%; float:left;text-align: center;
+}
+
+.fpFooter {
+    padding: 2% 7%; width:100%; clear:both;float:left;box-sizing:border-box;
+}
+
+.fpFooter .logo {
+    float:left;
+}
+
+.fpFooter .tag {
+    font-family: 'Source Sans Pro', sans-serif; color: #888888; font-size: 18px; font-weight: 300; float:right; margin-top: 20px;
+}
+
+#fp-custom-description {
+    background-color: #f4f4f4; color: #636363; display: inline-block; float: none; max-width: none; min-width: none; width: auto;
+}
+
+/*#fp-info {
+    position: relative; right: 5px; top: 8px;
+}*/
+
+.fpWrap .close {
+    color: #aaa;
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 0.5;
+    position: absolute;
+    right: 4px;
+    top: 2px;
+    text-decoration: none;
+}

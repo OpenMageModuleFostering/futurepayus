@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+
+    </default>
+    <futurepay_index_process>
+		<reference name="head">
+			<action method="addCss"><css>futurepay/styles.css</css></action>
+		</reference>
+    	<reference name="root">
+    		<action method="setTemplate"><template>page/empty.phtml</template></action>
+    	</reference>
+    	<reference name="content">
+    		<block type="futurepay/process" name="futurepay.process" template="futurepay/process.phtml" />
+    	</reference>
+    </futurepay_index_process>
+    <futurepay_index_getsignuploginform>
+        <reference name="head">
+                <action method="addCss"><css>futurepay/styles.css</css></action>
+        </reference>
+    	<reference name="root">
+    		<action method="setTemplate"><template>futurepay/getsignuploginform.phtml</template></action>
+    	</reference>
+    </futurepay_index_getsignuploginform>
+    
+    <futurepay_index_getmerchantsignupform>
+        <reference name="head">
+                <action method="addCss"><css>futurepay/styles.css</css></action>
+        </reference>
+    	<reference name="root">
+    		<action method="setTemplate"><template>futurepay/getmerchantsignupform.phtml</template></action>
+    	</reference>
+    </futurepay_index_getmerchantsignupform>
+    
+    <futurepay_index_getmerchantloginform>
+        <reference name="head">
+                <action method="addCss"><css>futurepay/styles.css</css></action>
+        </reference>
+    	<reference name="root">
+    		<action method="setTemplate"><template>futurepay/getmerchantloginform.phtml</template></action>
+    	</reference>
+    </futurepay_index_getmerchantloginform>
+</layout>

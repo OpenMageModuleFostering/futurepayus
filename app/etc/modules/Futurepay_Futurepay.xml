@@ -1,0 +1,10 @@
+<?xml version="1.0"?>  
+<config>  
+    <modules>  
+        <FuturePay_FuturePay>  
+            <active>true</active>
+            <codePool>community</codePool>  
+            <version>2.0.0</version>
+        </FuturePay_FuturePay>  
+    </modules>  
+</config>

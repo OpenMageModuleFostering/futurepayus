@@ -1,0 +1,106 @@
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600' rel='stylesheet' type='text/css'>
+<?php if (substr(Mage::getVersion(), 0, 3) == '1.8' || substr(Mage::getVersion(), 0, 3) == '1.7' || substr(Mage::getVersion(), 0, 3) == '1.6' || substr(Mage::getVersion(), 0, 3) == '1.5') {
+    echo "<link href='". $this->getSkinUrl('futurepay/styles18.css') ."' rel='stylesheet' type='text/css'>";
+} else {
+    echo "<link href='". $this->getSkinUrl('futurepay/styles19.css') ."' rel='stylesheet' type='text/css'>";
+} ?>
+<style>
+    <?php if (Mage::getStoreConfig('payment/futurepay/custom_image')): echo "#fp-custom-description { margin-left: 6px; margin-top: 6px; }"; endif; ?>
+    <?php if (!Mage::getStoreConfig('payment/futurepay/custom_image') && Mage::getStoreConfig('payment/futurepay/custom_description') == ''): echo "#fp-info { position: relative; right: 5px; top: 8px; }"; endif; ?>
+    <?php if (!Mage::getStoreConfig('payment/futurepay/custom_image') && Mage::getStoreConfig('payment/futurepay/custom_description') != ''): echo "#fp-info { position: relative; bottom: 6px; right: 4px; }"; endif; ?>
+    <?php if ((Mage::getStoreConfig('payment/futurepay/custom_description') != '') && (substr(Mage::getVersion(), 0, 3) == '1.8' || substr(Mage::getVersion(), 0, 3) == '1.7' || substr(Mage::getVersion(), 0, 3) == '1.6' || substr(Mage::getVersion(), 0, 3) == '1.5')): echo "#fp-info { position: relative; bottom: 0px; right: 0px; left: 5px; }"; endif; ?>
+    <?php if ((Mage::getStoreConfig('payment/futurepay/custom_description') == '') && (substr(Mage::getVersion(), 0, 3) == '1.8' || substr(Mage::getVersion(), 0, 3) == '1.7' || substr(Mage::getVersion(), 0, 3) == '1.6' || substr(Mage::getVersion(), 0, 3) == '1.5')): echo "#fp-info { position: relative; bottom: 0px; right: 2px; left: 5px; }"; endif; ?>
+</style>
+<div id="fp-info-popup" style="z-index:15; position: absolute; display:none; top:0;">
+                <div class="fpInfo">
+                        <div class="fpWrap">
+                                <div class="fpHeading">
+                                        <h2>Buy Now &amp; Pay Later</h2>
+                                        <a class="close" id="fp-close">×</a>
+                                </div>
+                                <div class="fpSum">
+                                        <p>FuturePay is a payment option that lets you shop without a credit card! It is secure, convenient and easy to use. Just put your purchases on a FuturePay tab to buy now and pay later.</p>
+                                </div>
+                                <div class="fpContent">
+                                        <div class="fpCol">
+                                                <img align="center" src="<?php echo $this->getSkinUrl('futurepay/icon-cart.png'); ?>" alt="Sign-up and check out in seconds cart" border="0" width="90"/>
+                                                <h3>Sign-Up and Checkout in Seconds</h3>
+                                                <p>Easily create an account with your contact information at checkout. You will never need a credit card - ever.</p>
+                                        </div>
+                                        <div class="fpCol">
+                                                <img src="<?php echo $this->getSkinUrl('futurepay/icon-fee.png'); ?>" alt="No hidden fees" border="0" width="90"/>
+                                                <h3>No Hidden Fees</h3>
+                                                <p>At the end of every billing period you can pay your balance off in full or carry your tab a month longer for as little as $5/month.</p>
+                                        </div>
+                                        <div class="fpCol">
+                                                <img src="<?php echo $this->getSkinUrl('futurepay/icon-secure.png'); ?>" alt="Safe and Secure" border="0" width="90"/>
+                                                <h3>Safe and Secure</h3>
+                                                <p>FuturePay keeps your information secure by using the latest fraud prevention and security tools.</p>
+                                        </div>
+                                </div>
+                                <div class="fpFooter">
+                                        <div class="logo"><img src="<?php echo $this->getSkinUrl('futurepay/fplogo.png'); ?>" alt="FuturePay" border="0" /></div>
+                                        <div class="tag">Buy Now &amp; Pay Later</div>
+                                </div>
+                        </div>
+                </div>
+</div>
+
+<!-- FuturePay Logo -->
+<?php if (Mage::getStoreConfig('payment/futurepay/custom_image') || Mage::getStoreConfig('payment/futurepay/custom_description') == ''): ?><img src="<?php if (Mage::getStoreConfig('payment/futurepay/custom_image')): echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'futurepay/' . Mage::getStoreConfig('payment/futurepay/custom_image'); elseif (Mage::getStoreConfig('payment/futurepay/custom_description') != ''): echo '#'; elseif (substr(Mage::getVersion(), 0, 3) == '1.8' || substr(Mage::getVersion(), 0, 3) == '1.7' || substr(Mage::getVersion(), 0, 3) == '1.6' || substr(Mage::getVersion(), 0, 3) == '1.5'): echo $this->getSkinUrl('futurepay/fpButton18.jpg'); else: echo $this->getSkinUrl('futurepay/fpButton.jpg'); endif; ?>" alt="<?php echo Mage::helper('paypal')->__('Acceptance Mark');?>" class="v-middle" width="68px" height="44px" /> <?php endif; ?>
+<?php
+    if (Mage::getStoreConfig('payment/futurepay/custom_description') != '') {
+        echo '<span id="fp-custom-description">' . Mage::getStoreConfig('payment/futurepay/custom_description') . '</span>';
+    }
+    //var_dump(Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA));
+    //var_dump(Mage::getStoreConfig('payment/futurepay/custom_image'));
+?>
+<a id="fp-info" href="#" onclick="return false;"><?php echo $this->__('Learn More'); ?></a>
+<!-- FuturePay Logo -->
+
+<script type="text/javascript">
+$('fp-info').observe('click', function (e) {
+        var overlay = new Element('div');
+        overlay.id = 'fp-info-overlay';
+        overlay.setStyle({
+            'top': 0, // e.clientY - (overlay.getHeight() / 2), // center around pointer?
+            'left': 0, // e.clientY - (overlay.getWidth() / 2), // center around pointer?
+            'width': '100%',
+            'height': '100%',
+            'opacity': 0.5,
+            'position': 'fixed',
+            'background': '#000000',
+            'z-index': '10'
+        });
+        $$('body')[0].insert({
+            'bottom': overlay
+        });
+        overlay.observe('click', function () {
+            $('fp-info-popup').hide();
+            this.remove();
+        });
+        document.getElementById('fp-close').observe('click', function () {
+            $('fp-info-popup').hide();
+            overlay.remove();
+        });
+        <?php if (substr(Mage::getVersion(), 0, 3) == '1.8' || substr(Mage::getVersion(), 0, 3) == '1.7' || substr(Mage::getVersion(), 0, 3) == '1.6' || substr(Mage::getVersion(), 0, 3) == '1.5') { ?>
+            $('fp-info-popup').setStyle({
+                'left': '15%',
+                'right': '15%',
+    //            'top': e.clientY - (overlay.getHeight() / 2),
+    //            'left': e.clientY - (overlay.getWidth() / 2)
+                'top': '5%',
+                'position': 'fixed',
+                'background-color': '#FFFFFF',
+                //'padding': '20px',
+            });
+        <?php } else { ?>
+            $('fp-info-popup').setStyle({
+                'left': 0
+    //            'top': e.clientY - (overlay.getHeight() / 2),
+    //            'left': e.clientY - (overlay.getWidth() / 2)
+            });
+        <?php } ?>
+        $('fp-info-popup').show();
+});
+</script>
