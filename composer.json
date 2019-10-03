@@ -1,7 +1,7 @@
 {
-    "name": "OpenMageModuleFostering\/FuturePayUS",
+    "name": "openmage-module-fostering\/futurepayus",
     "type": "magento-module",
-    "license": "OSL",
+    "license": "OSL-3.0",
     "homepage": "",
     "description": "FuturePay Payment method",
     "authors": [
